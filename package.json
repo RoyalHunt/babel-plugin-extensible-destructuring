@@ -27,9 +27,12 @@
     "build-this": "npm run clean && npm run build-this:cjs && npm run build-this:es",
     "build": "npm run build-runtime && npm run build-this",
     "test": "npm run build && npm install && node runtest",
-    "prepublishOnly": "npm run test"
+    "prepublishOnly": "npm run test",
+    "prepare": "npm run build"
   },
-  "dependencies": {},
+  "dependencies": {
+    "extensible-runtime": "file:./runtime"
+  },
   "devDependencies": {
     "@babel/cli": "^7.1.5",
     "@babel/core": "^7.1.6",
@@ -41,7 +44,6 @@
     "bluebird": "^3.2.2",
     "commander": "^2.20.0",
     "cross-env": "^5.2.0",
-    "extensible-runtime": "file:./runtime",
     "file": "^0.2.2",
     "immutable": "4.0.0-rc.12",
     "mocha": "^5.2.0",
