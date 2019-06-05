@@ -1,24 +1,24 @@
-import {Iterable} from 'immutable'
+import { isCollection } from 'immutable';
 
-let nCalls = 0
+let nCalls = 0;
 
 export function getN() {
-  return nCalls
+  return nCalls;
 }
 
 export function resetN() {
-  nCalls = 0
+  nCalls = 0;
 }
 
 export const extensibleGet = (o, k, d) => {
-  nCalls += 1
-  if (Iterable.isIterable(o)) {
-    return o.get(k, d)
+  nCalls += 1;
+  if (isCollection(o)) {
+    return o.get(k, d);
   } else if (k in o) {
-    return o[k]
+    return o[k];
   } else if (typeof d === 'number') {
-    return 'default' + d
+    return 'default' + d;
   } else {
-    return d
+    return d;
   }
-}
+};
